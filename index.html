@@ -54,6 +54,14 @@
             color: #666;
             margin-top: 30px;
         }
+        .path-info {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            color: #856404;
+        }
     </style>
 </head>
 <body>
@@ -61,10 +69,15 @@
         <h1>🚀 We've Moved to Production!</h1>
         
         <p><strong>This proof-of-concept URL is now out of date:</strong></p>
-        <div class="old-url">https://react-answers.vercel.app/</div>
+        <div class="old-url" id="currentUrl">https://react-answers.vercel.app/</div>
+        
+        <div class="path-info" id="pathInfo" style="display: none;">
+            <strong>You were trying to access a specific page.</strong><br>
+            You'll be redirected to the same path on our new site.
+        </div>
         
         <p><strong>Please update your bookmarks to our new production site:</strong></p>
-        <a href="https://ai-answers.alpha.canada.ca/" class="new-link">
+        <a href="https://ai-answers.alpha.canada.ca/" class="new-link" id="newLink">
             https://ai-answers.alpha.canada.ca/
         </a>
         
@@ -75,6 +88,29 @@
     </div>
     
     <script>
+        // Get the current path
+        const currentPath = window.location.pathname;
+        const baseNewUrl = 'https://ai-answers.alpha.canada.ca';
+        const newUrl = baseNewUrl + currentPath;
+        
+        // Update the display
+        const currentUrlElement = document.getElementById('currentUrl');
+        const newLinkElement = document.getElementById('newLink');
+        const pathInfoElement = document.getElementById('pathInfo');
+        
+        // Show current full URL
+        currentUrlElement.textContent = window.location.href;
+        
+        // Update new link to include the path
+        newLinkElement.href = newUrl;
+        newLinkElement.textContent = newUrl;
+        
+        // Show path info if there's a specific path
+        if (currentPath !== '/') {
+            pathInfoElement.style.display = 'block';
+        }
+        
+        // Countdown timer
         let timeLeft = 10;
         const countdownElement = document.getElementById('countdown');
         
@@ -84,7 +120,7 @@
             
             if (timeLeft <= 0) {
                 clearInterval(timer);
-                window.location.href = 'https://ai-answers.alpha.canada.ca/';
+                window.location.href = newUrl;
             }
         }, 1000);
     </script>
