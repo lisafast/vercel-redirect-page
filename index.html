@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moved to New Location</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 700px;
+            margin: 80px auto;
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        .container {
+            background: white;
+            color: #333;
+            padding: 50px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .old-url {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            color: #666;
+            margin: 15px 0;
+        }
+        .new-link {
+            font-size: 20px;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+            background: #e8f4f8;
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 20px 0;
+        }
+        .new-link:hover {
+            background: #d1ecf1;
+            text-decoration: underline;
+        }
+        .countdown {
+            font-size: 16px;
+            color: #666;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 We've Moved to Production!</h1>
+        
+        <p><strong>This proof-of-concept URL is now out of date:</strong></p>
+        <div class="old-url">https://react-answers.vercel.app/</div>
+        
+        <p><strong>Please update your bookmarks to our new production site:</strong></p>
+        <a href="https://ai-answers.alpha.canada.ca/" class="new-link">
+            https://ai-answers.alpha.canada.ca/
+        </a>
+        
+        <div class="countdown">
+            <p>🔄 <strong>Auto-redirecting in <span id="countdown">10</span> seconds...</strong></p>
+            <p><em>Or click the link above to go immediately</em></p>
+        </div>
+    </div>
+    
+    <script>
+        let timeLeft = 10;
+        const countdownElement = document.getElementById('countdown');
+        
+        const timer = setInterval(() => {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+            
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                window.location.href = 'https://ai-answers.alpha.canada.ca/';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
